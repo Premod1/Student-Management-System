@@ -1,8 +1,4 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package ui;
 
 import static com.sun.org.apache.xalan.internal.xsltc.compiler.util.Type.Int;
@@ -18,17 +14,12 @@ import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import src.mod.Db;
 
-/**
- *
- * @author premod
- */
+
 public class Teacher extends javax.swing.JFrame {
 
     DefaultTableModel model;
 
-    /**
-     * Creates new form Teacher
-     */
+    
     public Teacher() {
         initComponents();
         setLocationRelativeTo(null);
@@ -443,7 +434,7 @@ public class Teacher extends javax.swing.JFrame {
 
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
         // TODO add your handling code here:
-        load_data_table();
+        
     }//GEN-LAST:event_formWindowOpened
 
     private void Teacher_TableMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Teacher_TableMouseClicked
@@ -530,30 +521,7 @@ public class Teacher extends javax.swing.JFrame {
         dispose();
     }//GEN-LAST:event_btn_closeActionPerformed
 
-    //// custom function
-    private void load_data_table() {
-
-//        ResultSet r = null;
-//         try {
-//            Connection con = Db.createConnetion();
-//            Statement stmt = con.createStatement();
-//            String sql = "SELECT Id, name, address, age, gender,contact FROM teacher WHERE 1";
-//            r = stmt.executeQuery(sql);
-//            while(r.next()){
-//                String Id = r.getString("Id");
-//                String name = r.getString("name");
-//                String address = r.getString("address");
-//                String age = r.getString("age");
-//                String gender = r.getString("gender");
-//                String contact = r.getString("contact");
-//                String tbData [] = {Id,name,address,age,gender,contact};
-//                DefaultTableModel tblModel = (DefaultTableModel)Teacher_Table.getModel();
-        //               tblModel.addRow(tbData);
-        //         }
-        //     } catch (Exception ex) {
-        //         JOptionPane.showMessageDialog(null, ex);
-        //     }
-    }
+   
 
     /**
      * @param args the command line arguments

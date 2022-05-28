@@ -1,8 +1,4 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package ui;
 
 import java.sql.Connection;
@@ -16,35 +12,32 @@ import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import src.mod.Db;
 
-/**
- *
- * @author premod
- */
+
 public class student extends javax.swing.JFrame {
+
     DefaultTableModel model;
 
-    /**
-     * Creates new form student
-     */
+    
     public student() {
         initComponents();
         setLocationRelativeTo(null);
         show_student();
     }
- private void show_student(){
 
-    ResultSet r = null;
-    try{
-        Connection con = Db.createConnetion();
+    private void show_student() {
+
+        ResultSet r = null;
+        try {
+            Connection con = Db.createConnetion();
             Statement stmt = con.createStatement();
             String sql = "SELECT Id, name, address, age, gender, contact, clz_id FROM student ";
             r = stmt.executeQuery(sql);
-            
+
             model = (DefaultTableModel) student_table.getModel();
 
             model.setRowCount(0);
-            
-            while (r.next()){
+
+            while (r.next()) {
                 Vector v = new Vector();
                 v.add(Integer.toString(r.getInt("Id")));
                 v.add(r.getString("name"));
@@ -53,24 +46,18 @@ public class student extends javax.swing.JFrame {
                 v.add(r.getString("gender"));
                 v.add(Integer.toString(r.getInt("contact")));
                 v.add(Integer.toString(r.getInt("clz_id")));
-                
+
                 model.addRow(v);
-                
-                
-            
-                
+
             }
             student_table.setModel(model);
-    
-    
-    }catch(Exception ex){
-    
-        JOptionPane.showMessageDialog(null, ex);
+
+        } catch (Exception ex) {
+
+            JOptionPane.showMessageDialog(null, ex);
+        }
+
     }
-    
-}    
-    
-   
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -393,7 +380,7 @@ public class student extends javax.swing.JFrame {
             Connection con = Db.createConnetion();
             String sql = "UPDATE student SET name=?,address=?,age=?,gender=?,contact=?,clz_id=? WHERE Id=?";
             PreparedStatement stm = con.prepareStatement(sql);
-            
+
             stm.setString(1, txt_Name.getText());
             stm.setString(2, txt_Address.getText());
             stm.setInt(3, Integer.parseInt(txt_age.getText()));
@@ -401,7 +388,7 @@ public class student extends javax.swing.JFrame {
             stm.setInt(5, Integer.parseInt(txt_contact.getText()));
             stm.setInt(6, Integer.parseInt(lbl_studentId.getText()));
             stm.setString(7, (String) clz.getSelectedItem());
-            
+
             int response = stm.executeUpdate();
             if (response > 0) {
                 //dispose();
@@ -411,7 +398,7 @@ public class student extends javax.swing.JFrame {
         } catch (Exception ex) {
             Logger.getLogger(student.class.getName()).log(Level.SEVERE, null, ex);
         }
-                                          
+
     }//GEN-LAST:event_btn_upadeActionPerformed
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
@@ -437,6 +424,8 @@ public class student extends javax.swing.JFrame {
             if (response > 0) {
                 //dispose();
                 JOptionPane.showMessageDialog(this, "Student Add Succesfully");
+                show_student();
+
             }
         } catch (Exception ex) {
             Logger.getLogger(student.class.getName()).log(Level.SEVERE, null, ex);
@@ -478,7 +467,7 @@ public class student extends javax.swing.JFrame {
 
     }//GEN-LAST:event_btn_saveMouseClicked
 
-     private void cls_form() {
+    private void cls_form() {
         lbl_studentId.setText("");
         txt_Name.setText("");
         txt_Address.setText("");
@@ -488,7 +477,7 @@ public class student extends javax.swing.JFrame {
         clz.setSelectedItem("");
 
     }
-    
+
     private void student_tableMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_student_tableMousePressed
         // TODO add your handling code here:
         int row = student_table.getSelectedRow();
@@ -499,7 +488,7 @@ public class student extends javax.swing.JFrame {
         gender.setSelectedItem(student_table.getModel().getValueAt(row, 4).toString());
         txt_contact.setText(student_table.getModel().getValueAt(row, 5).toString());
         clz.setSelectedItem(student_table.getModel().getValueAt(row, 6).toString());
-        
+
         btn_save.setEnabled(false);
     }//GEN-LAST:event_student_tableMousePressed
 

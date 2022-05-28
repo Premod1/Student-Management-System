@@ -288,6 +288,7 @@ public class Subject extends javax.swing.JFrame {
             if (response > 0) {
                 //dispose();
                 JOptionPane.showMessageDialog(this , "Subject Add Succesfully");
+                show_subject();
             }
         } catch (Exception ex) {
             Logger.getLogger(student.class.getName()).log(Level.SEVERE, null, ex);
