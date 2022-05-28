@@ -386,12 +386,12 @@ public class student extends javax.swing.JFrame {
             stm.setInt(3, Integer.parseInt(txt_age.getText()));
             stm.setString(4, (String) gender.getSelectedItem());
             stm.setInt(5, Integer.parseInt(txt_contact.getText()));
-            stm.setInt(6, Integer.parseInt(lbl_studentId.getText()));
-            stm.setString(7, (String) clz.getSelectedItem());
+            stm.setInt(7, Integer.parseInt(lbl_studentId.getText()));
+            stm.setString(6, (String) clz.getSelectedItem());
 
             int response = stm.executeUpdate();
             if (response > 0) {
-                //dispose();
+                
                 JOptionPane.showMessageDialog(this, "student Update Succesfully");
                 show_student();
             }

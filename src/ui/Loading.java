@@ -27,6 +27,7 @@ public class Loading extends javax.swing.JFrame {
                    lbl_load.setText("Loading :"+count+"%");
                    
                 
+                   
                }else{
                    timer.stop();
                    
